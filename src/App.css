@@ -1,0 +1,1041 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f6d9a9 0%,
+      #f8e7c8 42%,
+      #ead5b7 100%
+    );
+
+  transition: background 1s ease;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.sun {
+  width: 150px;
+  height: 150px;
+
+  position: absolute;
+  top: 60px;
+  right: 12%;
+
+  border-radius: 50%;
+
+  background: #f7c95d;
+
+  box-shadow:
+    0 0 60px rgba(247, 201, 93, 0.5),
+    0 0 120px rgba(247, 201, 93, 0.25);
+}
+
+.cloud {
+  position: absolute;
+
+  width: 150px;
+  height: 40px;
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  filter: blur(1px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: inherit;
+}
+
+.cloud::before {
+  width: 65px;
+  height: 65px;
+
+  left: 25px;
+  bottom: 10px;
+}
+
+.cloud::after {
+  width: 80px;
+  height: 80px;
+
+  right: 20px;
+  bottom: 5px;
+}
+
+.cloud-1 {
+  top: 15%;
+  left: 5%;
+
+  animation: cloudMove 20s linear infinite;
+}
+
+.cloud-2 {
+  top: 25%;
+  right: 3%;
+
+  transform: scale(0.7);
+
+  animation: cloudMove 25s linear infinite reverse;
+}
+
+.cloud-3 {
+  bottom: 15%;
+  left: 10%;
+
+  transform: scale(0.5);
+
+  opacity: 0.4;
+}
+
+@keyframes cloudMove {
+  0% {
+    transform: translateX(-30px);
+  }
+
+  50% {
+    transform: translateX(30px);
+  }
+
+  100% {
+    transform: translateX(-30px);
+  }
+}
+
+.bird {
+  position: absolute;
+
+  font-size: 28px;
+  color: rgba(70, 55, 43, 0.3);
+
+  transform: rotate(-10deg);
+}
+
+.bird-1 {
+  top: 20%;
+  left: 20%;
+}
+
+.bird-2 {
+  top: 30%;
+  left: 27%;
+
+  font-size: 20px;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.morning-card {
+  width: min(500px, 100%);
+
+  min-height: 700px;
+
+  position: relative;
+  z-index: 5;
+
+  padding: 40px 38px 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  border-radius: 34px;
+
+  background: rgba(255, 250, 240, 0.72);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 30px 80px rgba(87, 57, 32, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  animation: cardAppear 0.8s ease;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  text-align: center;
+}
+
+.small-label {
+  color: #9a7250;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+.header h1 {
+  margin: 8px 0 8px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 42px;
+  line-height: 1;
+
+  color: #3f2b20;
+}
+
+.header h1 span {
+  color: #9a5b32;
+}
+
+.header p {
+  margin: 12px 0 0;
+
+  color: #856c5b;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+   COFFEE AREA
+========================= */
+
+.coffee-area {
+  height: 260px;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coffee-table {
+  position: absolute;
+
+  bottom: 30px;
+
+  width: 260px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #b27a50;
+
+  box-shadow:
+    0 12px 15px rgba(77, 43, 23, 0.18);
+}
+
+/* =========================
+   CUP
+========================= */
+
+.cup {
+  width: 150px;
+  height: 120px;
+
+  position: relative;
+
+  z-index: 2;
+
+  animation: cupFloat 4s ease-in-out infinite;
+}
+
+@keyframes cupFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.cup-body {
+  width: 125px;
+  height: 100px;
+
+  position: absolute;
+  left: 12px;
+  top: 5px;
+
+  overflow: hidden;
+
+  border-radius: 15px 15px 42px 42px;
+
+  background: linear-gradient(
+    135deg,
+    #fff9ef,
+    #ead7bd
+  );
+
+  border: 3px solid #d4b898;
+
+  box-shadow:
+    0 15px 20px rgba(67, 40, 23, 0.12);
+}
+
+.cup-handle {
+  width: 45px;
+  height: 55px;
+
+  position: absolute;
+
+  right: -2px;
+  top: 25px;
+
+  border: 10px solid #d4b898;
+
+  border-left: 0;
+
+  border-radius: 0 35px 35px 0;
+}
+
+.cup-shadow {
+  width: 180px;
+  height: 20px;
+
+  position: absolute;
+
+  bottom: -4px;
+  left: -15px;
+
+  border-radius: 50%;
+
+  background: rgba(80, 47, 27, 0.12);
+}
+
+.coffee-liquid {
+  width: 100%;
+  height: 0%;
+
+  position: absolute;
+  bottom: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #9b5a30,
+      #63351e
+    );
+
+  transition: height 1s ease;
+}
+
+/* Saat kopi sudah siap */
+.ready .coffee-liquid,
+.welcome .coffee-liquid {
+  height: 75%;
+}
+
+/* Saat brewing */
+.brewing .coffee-liquid {
+  height: 55%;
+
+  animation: coffeeRise 3.5s ease forwards;
+}
+
+@keyframes coffeeRise {
+  0% {
+    height: 0%;
+  }
+
+  100% {
+    height: 75%;
+  }
+}
+
+/* Aliran kopi */
+.coffee-stream {
+  width: 8px;
+  height: 85px;
+
+  position: absolute;
+
+  top: -80px;
+  left: 58px;
+
+  border-radius: 10px;
+
+  background: #70401f;
+
+  animation: coffeePour 0.7s ease-in-out infinite;
+}
+
+@keyframes coffeePour {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+
+  50% {
+    transform: scaleX(0.65);
+  }
+}
+
+/* =========================
+   STEAM
+========================= */
+
+.steam-container {
+  position: absolute;
+
+  top: 15px;
+
+  display: flex;
+
+  gap: 14px;
+
+  z-index: 3;
+}
+
+.steam {
+  width: 10px;
+  height: 65px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  border-left: 3px solid rgba(255, 255, 255, 0.7);
+
+  animation: steamMove 2s ease-in-out infinite;
+}
+
+.steam-2 {
+  animation-delay: 0.5s;
+}
+
+.steam-3 {
+  animation-delay: 1s;
+}
+
+@keyframes steamMove {
+  0% {
+    opacity: 0;
+
+    transform: translateY(15px) scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: translateY(-30px) scale(1.2);
+  }
+}
+
+/* =========================
+   COFFEE STATUS
+========================= */
+
+.coffee-status {
+  position: absolute;
+
+  bottom: -2px;
+
+  text-align: center;
+
+  color: #80634e;
+
+  font-size: 13px;
+}
+
+.coffee-status span {
+  font-size: 18px;
+}
+
+.coffee-status p {
+  margin: 4px 0;
+}
+
+.ready-text {
+  color: #79502e;
+
+  font-weight: 700;
+}
+
+.welcome-text {
+  color: #7a522e;
+
+  font-weight: 700;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.action-area {
+  text-align: center;
+}
+
+.coffee-button,
+.login-button,
+.start-button {
+  width: 100%;
+
+  padding: 16px 20px;
+
+  border: 0;
+
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  background: linear-gradient(
+    135deg,
+    #8b542f,
+    #5f351f
+  );
+
+  box-shadow:
+    0 10px 25px rgba(96, 54, 31, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.coffee-button:hover,
+.login-button:hover,
+.start-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 30px rgba(96, 54, 31, 0.32);
+}
+
+.coffee-button span {
+  margin-right: 8px;
+}
+
+.coffee-button strong,
+.login-button strong,
+.start-button strong {
+  float: right;
+
+  font-size: 20px;
+}
+
+.hint {
+  margin-top: 12px;
+
+  color: #9b8472;
+
+  font-size: 12px;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-area {
+  animation: fadeUp 0.5s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+.login-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto 10px;
+
+  border-radius: 15px;
+
+  background: #ead4b9;
+
+  font-size: 24px;
+}
+
+.login-area h2,
+.ready-area h2,
+.welcome-area h2 {
+  margin: 8px 0;
+
+  text-align: center;
+
+  font-family: "Playfair Display", serif;
+
+  color: #3f2b20;
+
+  font-size: 29px;
+}
+
+.login-description,
+.ready-area p,
+.welcome-area p {
+  margin: 0 0 18px;
+
+  text-align: center;
+
+  color: #8a7260;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+.input-group {
+  margin-bottom: 14px;
+}
+
+.input-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #654a38;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.input-wrapper {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 13px;
+
+  border: 1px solid #dfcbb4;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  transition: 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: #9a5b32;
+
+  box-shadow:
+    0 0 0 3px rgba(154, 91, 50, 0.1);
+}
+
+.input-wrapper > span {
+  font-size: 15px;
+}
+
+.input-wrapper input {
+  width: 100%;
+
+  border: 0;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #4a3324;
+
+  font-size: 13px;
+}
+
+.input-wrapper input::placeholder {
+  color: #b29b87;
+}
+
+.show-password {
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  padding: 3px;
+
+  font-size: 14px;
+}
+
+.login-options {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin: 8px 0 16px;
+
+  color: #927966;
+
+  font-size: 11px;
+}
+
+.login-options label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+.login-options span {
+  cursor: pointer;
+}
+
+.error-message {
+  margin: 8px 0;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background: #f9dddd;
+
+  color: #a54848;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+.back-button {
+  display: block;
+
+  margin: 14px auto 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #92725a;
+
+  cursor: pointer;
+
+  font-size: 12px;
+}
+
+/* =========================
+   BREWING
+========================= */
+
+.brewing-area {
+  text-align: center;
+
+  animation: fadeUp 0.5s ease;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 7px;
+
+  overflow: hidden;
+
+  margin-bottom: 12px;
+
+  border-radius: 20px;
+
+  background: #e4d3c0;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    90deg,
+    #b06b37,
+    #70401f
+  );
+
+  animation: progress 3.5s linear forwards;
+}
+
+@keyframes progress {
+  to {
+    width: 100%;
+  }
+}
+
+.brewing-area p {
+  margin: 0;
+
+  color: #8b705b;
+
+  font-size: 12px;
+}
+
+/* =========================
+   READY
+========================= */
+
+.ready-area {
+  text-align: center;
+
+  animation: fadeUp 0.6s ease;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto 10px;
+
+  border-radius: 50%;
+
+  background: #dcebdc;
+
+  color: #5d895d;
+
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.ready-area p {
+  margin-bottom: 20px;
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-area {
+  text-align: center;
+
+  animation: fadeUp 0.6s ease;
+}
+
+.welcome-icon {
+  font-size: 50px;
+
+  animation: sunRotate 5s linear infinite;
+}
+
+@keyframes sunRotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.daily-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 20px 0;
+
+  padding: 15px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.6);
+
+  text-align: left;
+}
+
+.daily-card > span {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 12px;
+
+  background: #ead4b9;
+
+  font-size: 21px;
+}
+
+.daily-card div {
+  flex: 1;
+}
+
+.daily-card strong,
+.daily-card small {
+  display: block;
+}
+
+.daily-card strong {
+  color: #553a29;
+
+  font-size: 13px;
+}
+
+.daily-card small {
+  margin-top: 3px;
+
+  color: #9c8673;
+
+  font-size: 10px;
+}
+
+.daily-card b {
+  color: #6e9a6e;
+}
+
+.reset-button {
+  border: 0;
+
+  background: transparent;
+
+  color: #956b4a;
+
+  cursor: pointer;
+
+  font-size: 12px;
+}
+
+.success-message {
+  margin-top: 14px;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background: #e5f0e2;
+
+  color: #62835d;
+
+  font-size: 12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  position: absolute;
+
+  bottom: 20px;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  color: #a08773;
+
+  font-size: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  .app {
+    padding: 15px;
+  }
+
+  .morning-card {
+    min-height: 680px;
+
+    padding: 30px 23px 25px;
+
+    border-radius: 27px;
+  }
+
+  .header h1 {
+    font-size: 35px;
+  }
+
+  .coffee-area {
+    height: 245px;
+  }
+
+  .sun {
+    width: 100px;
+    height: 100px;
+
+    right: 5%;
+    top: 40px;
+  }
+
+  footer {
+    font-size: 8px;
+  }
+}
